@@ -1,26 +1,22 @@
 import { useState } from 'react';
 import PlayerCard from '../../components/PlayerCard/PlayerCard';
+import './comparison.css';
 
 const Comparison = ({ playerInfo }) => {
-  const [player, setPlayer] = useState(0);
+  const [pp, setPp] = useState({});
 
-  const playerToCompare = (id) => {
-    let player = playerInfo.find((player) => player.id === id);
+  const playerToCompare = (e) => {
+    let id = e.target.value;
+    let chosen = playerInfo.find((player) => player.name === id);
+    setPp(chosen);
+    console.log(pp);
   };
 
   return (
-    <div>
-      <select name="cars" id="cars">
-        {playerInfo.map((player) => {
-          return (
-            <option value={player.id} onChange={() => playerToCompare(value)}>
-              {player.name}
-            </option>
-          );
-        })}
-      </select>
-      <PlayerCard player={playerInfo} />
-      {/* <PlayerCard player={'?'} /> */}
+    <div className="compare__container">
+      {playerInfo.map((player) => {
+        return <PlayerCard key={player.name} player={player} />;
+      })}
     </div>
   );
 };

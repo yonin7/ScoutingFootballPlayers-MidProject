@@ -3,6 +3,9 @@
   padding: 0;
   box-sizing: border-box;
 }
+body {
+  background-color: #e9e9ebc5;
+}
 .App {
   text-align: center;
 }

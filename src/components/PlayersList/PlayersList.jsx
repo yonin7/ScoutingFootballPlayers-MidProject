@@ -3,7 +3,6 @@ import PlayerCard from '../PlayerCard/PlayerCard';
 import './playerslist.css';
 
 const PlayersList = ({ players, selectedPlayer }) => {
-  console.log(players);
   return (
     <div className="cards__container">
       {players?.map((player, i) => {

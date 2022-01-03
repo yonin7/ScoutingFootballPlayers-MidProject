@@ -2,8 +2,11 @@ import { Link } from 'react-router-dom';
 import './playercard.css';
 const PlayerCard = ({ selectedPlayer, player, displayLink = false }) => {
   const chosenPlayer = (e) => {
-    console.log(player);
     if (e.target.checked) selectedPlayer(player);
+  };
+
+  const toReport = (e) => {
+    console.log(e);
   };
   return (
     <div className="card__container">
@@ -35,13 +38,18 @@ const PlayerCard = ({ selectedPlayer, player, displayLink = false }) => {
             />
           </Link>
         )}
-        <Link to={{ pathname: '/scoutReports', state: { player } }}>
+        <Link
+          to={{ pathname: '/scoutReports', state: { player } }}
+          onClick={(e) => toReport(e)}
+        >
           <img
             src="https://i.ibb.co/568JMyn/Giornalista.png"
             alt="ScoutReports"
           />
         </Link>
-        <input type="checkbox" onChange={(e) => chosenPlayer(e)}></input>
+        {displayLink && (
+          <input type="checkbox" onChange={(e) => chosenPlayer(e)}></input>
+        )}
       </div>
     </div>
   );

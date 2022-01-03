@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import ReportCard from '../../components/ReportCard/ReportCard';
 import { v4 as uuid } from 'uuid';
 
-const ScoutReports = ({ reportsCounterFunc, ...props }) => {
+const ScoutReports = ({ playerInfo, reportsCounterFunc, ...props }) => {
   const player = props?.location?.state?.player;
   const [reportsList, setReportsList] = useState(
     JSON.parse(localStorage.getItem('reports')) || []
@@ -35,7 +35,7 @@ const ScoutReports = ({ reportsCounterFunc, ...props }) => {
       ScoutReports
       <div>
         {reportsList.map((report) => (
-          <ReportCard report={report} setReport={setReport} />
+          <ReportCard key={report.name} report={report} setReport={setReport} />
         ))}
       </div>
     </div>

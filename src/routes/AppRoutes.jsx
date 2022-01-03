@@ -14,8 +14,11 @@ const AppRoutes = () => {
     setReportsCounter(reportsCounter + 1);
   };
   const selectedPlayer = (data) => {
-    let newData = [];
-    newData.push(data);
+    let newData = [...playerInfo];
+    if (newData.length >= 3) {
+      newData.shift();
+      newData.push(data);
+    } else newData.push(data);
     setPlayerInfo(newData);
     console.log(playerInfo);
   };
