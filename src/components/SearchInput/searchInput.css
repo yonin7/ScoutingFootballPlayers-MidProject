@@ -1,0 +1,40 @@
+.input__container {
+  width: 80%;
+  height: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 5.5rem;
+  position: relative;
+}
+.input__container img {
+  width: 2.2rem;
+  height: 2rem;
+  position: absolute;
+  right: 6rem;
+}
+.input__container input {
+  padding: 0 2rem;
+  width: 100%;
+  height: 3rem;
+  border: 3px solid #918585;
+  border-radius: 1rem;
+  color: #003d52;
+  background-color: #e7e7e7;
+}
+.input__container input:focus {
+  border: 3px solid #03445a;
+  outline: none;
+}
+
+@media (max-width: 767px) {
+  .input__container {
+    width: 100%;
+    height: 3.4rem;
+  }
+  .input__container input {
+    text-align: center;
+    width: 100%;
+    height: 2.3rem;
+  }
+}/*# sourceMappingURL=searchinput.css.map */

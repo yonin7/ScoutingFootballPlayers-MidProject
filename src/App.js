@@ -1,10 +1,8 @@
-import React from 'react';
+import AppRoutes from './routes/AppRoutes';
 import './App.css';
-// import axios from 'axios';
-// , { useState, useEffect, useRef }
-function App() {
-  return <div></div>;
-}
-// ReactDOM.render(<App />, document.querySelector('#root'));
+
+const App = () => {
+  return <AppRoutes />;
+};
 
 export default App;

@@ -1,0 +1,105 @@
+.card__container {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  border: 1px solid black;
+  color: #035d7a;
+  background-color: #e9e9ebc5;
+  border-radius: 2rem;
+  width: 16rem;
+  height: 25rem;
+  box-shadow: 4px 0px 12px #001921;
+}
+.card__container .img__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.card__container .img__container h4 {
+  position: absolute;
+  top: 2px;
+  text-shadow: 5px 5px 25px black;
+  color: #fff;
+  padding: 0.7rem;
+}
+.card__container .img__container .position {
+  position: absolute;
+  bottom: -1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+  background-color: #e9e9ebc5;
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+}
+.card__container .img__container img {
+  width: 100%;
+  height: 16.5rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-bottom-left-radius: 50% 20%;
+  border-bottom-right-radius: 50% 20%;
+  border-top-left-radius: 2rem;
+  border-top-right-radius: 2rem;
+  box-shadow: 0px 10px 10px #888888;
+}
+.card__container .shareAndLike {
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.card__container .shareAndLike .share img {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+.card__container .titles {
+  width: 100%;
+  height: 7rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
+}
+.card__container .links__container {
+  display: flex;
+  gap: 2rem;
+}
+.card__container .links__container img {
+  width: 2rem;
+  height: 2rem;
+}
+
+@media (max-width: 767px) {
+  .card__container {
+    width: 10.5rem;
+    height: 18rem;
+  }
+  .card__container .img__container {
+    width: 100%;
+    height: 9rem;
+  }
+  .card__container .img__container h4 {
+    font-size: 0.7rem;
+    padding: 0.7rem;
+  }
+  .card__container .img__container .position {
+    bottom: -1.2rem;
+    width: 2rem;
+    height: 2rem;
+  }
+  .card__container .titles {
+    width: 100%;
+    height: 5rem;
+    font-size: 0.7rem;
+    margin-top: 0.2rem;
+  }
+  .card__container .links__container {
+    gap: 1rem;
+  }
+}/*# sourceMappingURL=playercard.css.map */

@@ -1,0 +1,19 @@
+.cards__container {
+  width: 80%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+@media (max-width: 767px) {
+  .cards__container {
+    width: 80%;
+    height: 100%;
+    gap: 1.5rem;
+    padding: 0rem;
+  }
+}/*# sourceMappingURL=playerslist.css.map */
