@@ -2,20 +2,28 @@ import { useState, useEffect } from 'react';
 import api from '../../api/api';
 import SearchInput from '../../components/SearchInput/SearchInput';
 import PlayersList from '../../components/PlayersList/PlayersList';
+import Modal from '../../components/Modal';
 import './search.css';
 
-const Search = ({ selectedPlayer }) => {
+const Search = ({ selectedPlayer, selectedPlayerReport }) => {
   const [playersData, setPlayersData] = useState([]);
   const [filteredPlayers, setFilteredPlayers] = useState([]);
   const [searchField, setSearchField] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [playerData, setPlayerData] = useState({});
 
   useEffect(() => {
     const fetchPlayersInfo = async () => {
       try {
         setIsLoading(true);
-        const response = await api.get();
-        setPlayersData(response.data);
+        const response = await api.post('/find', {
+          collection: 'player_stats',
+          database: 'myFirstDatabase',
+          dataSource: 'Cluster0',
+          limit: 10,
+        });
+        setPlayersData(response.data.documents);
         setIsLoading(false);
       } catch (e) {
         console.log(e);
@@ -27,17 +35,6 @@ const Search = ({ selectedPlayer }) => {
 
   const search = (input) => {
     setSearchField(input);
-  };
-  //check it
-  const debounce = (func) => {
-    let timeout;
-    return (...args) => {
-      clearTimeout(timeout);
-      timeout = setTimeout(() => {
-        console.log('Daniel');
-        func();
-      }, 1000);
-    };
   };
 
   useEffect(() => {
@@ -51,18 +48,38 @@ const Search = ({ selectedPlayer }) => {
     }
   }, [searchField, playersData]);
 
+  const handleModalOpen = (player) => {
+    setIsModalOpen(true);
+    setPlayerData(player);
+  };
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+  };
+  const reportRequest = () => {
+    console.log(playerData);
+    selectedPlayerReport(playerData);
+  };
+  const compareRequest = () => {
+    selectedPlayer(playerData);
+  };
+
   return (
     <div className="search__container">
+      <Modal
+        isOpen={isModalOpen}
+        handleModalClose={handleModalClose}
+        reportRequest={reportRequest}
+        compareRequest={compareRequest}
+      />
       <SearchInput handleSearchInput={search} />
       {isLoading ? (
         <p>Loading...</p>
       ) : (
-        searchField && (
-          <PlayersList
-            players={filteredPlayers}
-            selectedPlayer={selectedPlayer}
-          />
-        )
+        <PlayersList
+          players={filteredPlayers}
+          selectedPlayer={selectedPlayer}
+          onCardClick={handleModalOpen}
+        />
       )}
     </div>
   );

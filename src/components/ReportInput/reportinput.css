@@ -1,0 +1,14 @@
+.inputcontainer {
+  display: grid;
+  grid-template-columns: 1fr 4fr 4fr;
+}
+.inputcontainer .deleteBTN {
+  cursor: pointer;
+  border-radius: 50%;
+  width: 1.5rem;
+}
+.inputcontainer input {
+  width: 3rem;
+  margin-left: 3rem;
+  align-items: right;
+}/*# sourceMappingURL=reportinput.css.map */

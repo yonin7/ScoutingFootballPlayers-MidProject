@@ -1,11 +1,49 @@
-const ReportCard = ({ report, setReport }) => {
-  const handleUpdate = (property) => (e) => {
-    setReport(property, e.target.value, report.id);
+import { useState } from 'react';
+import './reportcard.css';
+import Input from '../ReportInput/ReportInput';
+
+const ReportCard = ({ report, handleDelete }) => {
+  const [skills, setSkills] = useState([
+    'Pace',
+    'Dribbling',
+    'Shooting',
+    'Passing',
+    'Defence',
+    'Physical',
+  ]);
+  const [newSkills, setNewSkills] = useState([]);
+
+  const setReport = (property, value, id) => {
+    console.log(property, value, id);
+    const newReports = skills.map((report) =>
+      report.id === id ? { ...report, [property]: value } : report
+    );
+
+    setSkills(newReports);
+  };
+
+  const handleCreate = (e) => {
+    const newSkills = [...skills];
+    newSkills.push(e.target.value);
+    setNewSkills(newSkills);
+  };
+  const submitCreation = () => {
+    setSkills(newSkills);
+  };
+  const handleInputDelete = (id) => {
+    console.log(id);
+    let newSkillsList = skills.filter((playerCard, index) => index !== id);
+    setSkills(newSkillsList);
   };
 
   return (
-    <div>
-      {' '}
+    <div className="report__container">
+      <input
+        className="Delete"
+        type="submit"
+        onClick={() => handleDelete(report.id)}
+        value="X"
+      />{' '}
       {/* Header */}
       {report.player && (
         <div>
@@ -16,42 +54,30 @@ const ReportCard = ({ report, setReport }) => {
         </div>
       )}
       <div>
-        Pace:{' '}
-        <input
-          type="number"
-          value={report.pace || ''}
-          onChange={handleUpdate('pace')}
-        />
-        Dribling:{' '}
-        <input
-          type="number"
-          value={report.dribling || ''}
-          onChange={handleUpdate('dribling')}
-        />
-        Shoting:{' '}
-        <input
-          type="number"
-          value={report.shoting || ''}
-          onChange={handleUpdate('shoting')}
-        />
-        Passing:{' '}
-        <input
-          type="number"
-          value={report.passing || ''}
-          onChange={handleUpdate('passing')}
-        />
-        Defence:{' '}
-        <input
-          type="number"
-          value={report.defence || ''}
-          onChange={handleUpdate('defence')}
-        />
-        Phisicl:{' '}
-        <input
-          type="number"
-          value={report.phisicl || ''}
-          onChange={handleUpdate('phisicl')}
-        />
+        {report.player &&
+          skills.map((skill, index) => {
+            return (
+              <div className="" key={index}>
+                <Input
+                  id={index}
+                  Skill={skill}
+                  handleInputDelete={handleInputDelete}
+                  report={report}
+                  setReport={setReport}
+                />
+              </div>
+            );
+          })}
+        {report.player && (
+          <div className="createNewInput">
+            <input type="text" onChange={(e) => handleCreate(e)} />
+            <input
+              type="submit"
+              value="Add Skill"
+              onClick={() => submitCreation()}
+            />
+          </div>
+        )}
       </div>
     </div>
   );

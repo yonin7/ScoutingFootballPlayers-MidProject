@@ -1,0 +1,16 @@
+.inputcontainer {
+  display: grid;
+  grid-template-columns: 1fr 4fr 4fr;
+  // gap: 2rem;
+
+  .deleteBTN {
+    cursor: pointer;
+    border-radius: 50%;
+    width: 1.5rem;
+  }
+  input {
+    width: 3rem;
+    margin-left: 3rem;
+    align-items: right;
+  }
+}

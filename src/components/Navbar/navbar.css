@@ -1,12 +1,12 @@
 .navbar__container {
   width: 100%;
-  height: 3.5rem;
+  height: 8vh;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 2rem;
   border-bottom: 1px solid black;
-  background-color: rgba(255, 255, 255, 0.698);
+  background-color: rgba(150, 172, 185, 0.061);
 }
 .navbar__container .rigthIcons {
   display: flex;
@@ -16,9 +16,18 @@
   width: 3rem;
   height: 3rem;
 }
+.navbar__container .rigthIcons .report {
+  position: relative;
+}
+.navbar__container .rigthIcons .counter {
+  position: absolute;
+  right: 0rem;
+  bottom: 0px;
+  color: red;
+}
 .navbar__container img {
-  width: 7rem;
-  height: 7rem;
+  width: 10rem;
+  height: 9rem;
 }
 
 @media (max-width: 767px) {

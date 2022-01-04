@@ -1,19 +1,19 @@
 import { Link } from 'react-router-dom';
 import './playercard.css';
-const PlayerCard = ({ selectedPlayer, player, displayLink = false }) => {
-  const chosenPlayer = (e) => {
-    if (e.target.checked) selectedPlayer(player);
-  };
+const PlayerCard = ({ player, displayLink = false, onCardClick }) => {
+  // const chosenPlayer = () => {
+  //   selectedPlayer(player);
+  // };
 
   const toReport = (e) => {
     console.log(e);
   };
   return (
-    <div className="card__container">
+    <div className="card__container" onClick={() => onCardClick(player)}>
       <div className="img__container">
-        <h4>{player.name}</h4>
-        <img src="https://images.beinsports.com/9B6uAk4Fq1KpzsqatP6ekliPxlk=/full-fit-in/1000x0/3230619-KAKA_REAL_MADRID.jpg" />
-        <h5 className="position">{player.position}POS </h5>
+        <h4>{player.player_name}</h4>
+        <img src={`${player.image}_120.png`} />
+        <h5 className="position">{player.positioning}POS </h5>
       </div>
       <div className="shareAndLike">
         <div className="like">🖤</div>
@@ -25,31 +25,9 @@ const PlayerCard = ({ selectedPlayer, player, displayLink = false }) => {
         </div>
       </div>
       <div className="titles">
-        <h5>Age:{player.birth}</h5>
+        <h5>Age:{player.birthday}</h5>
         <h5>heigth:{player.heigth}</h5>
         <h5>weigth:{player.weigth}</h5>
-      </div>
-      <div className="links__container">
-        {displayLink && (
-          <Link to="/comparison">
-            <img
-              src="https://i.ibb.co/BCMVF0P/betting-company-1.png"
-              alt="compare"
-            />
-          </Link>
-        )}
-        <Link
-          to={{ pathname: '/scoutReports', state: { player } }}
-          onClick={(e) => toReport(e)}
-        >
-          <img
-            src="https://i.ibb.co/568JMyn/Giornalista.png"
-            alt="ScoutReports"
-          />
-        </Link>
-        {displayLink && (
-          <input type="checkbox" onChange={(e) => chosenPlayer(e)}></input>
-        )}
       </div>
     </div>
   );

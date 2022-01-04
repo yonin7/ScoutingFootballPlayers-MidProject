@@ -1,5 +1,5 @@
 .report__container {
-  background-color: #f0f0f0;
+  background-color: rgb(240, 240, 240);
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -9,12 +9,12 @@
   padding: 1rem;
   width: 18rem;
   position: relative;
+  .Delete {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+  }
 }
-.report__container .Delete {
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
-  width: 1.5rem;
-  height: 1.5rem;
-  border-radius: 50%;
-}/*# sourceMappingURL=reportcard.css.map */

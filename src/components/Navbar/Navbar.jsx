@@ -5,7 +5,7 @@ import Search from '../../assets/SearchPeople.png';
 import Compare from '../../assets/Compare.png';
 import Reports from '../../assets/Reports.png';
 
-const Navbar = () => {
+const Navbar = ({ reportsCounter }) => {
   return (
     <nav className="navbar__container">
       <Link style={{ textDecoration: 'none', color: '#00ADE6' }} to="/">
@@ -18,12 +18,19 @@ const Navbar = () => {
         <Link to="/comparison">
           <img src={Compare} alt="compare" />
         </Link>
-        <Link
-          style={{ textDecoration: 'none', color: '#00ADE6' }}
-          to="/scoutReports"
-        >
-          <img src={Reports} alt="ScoutReports" />
-        </Link>
+        <div className="report">
+          <Link
+            style={{
+              textDecoration: 'none',
+              color: '#00ADE6',
+            }}
+            to="/scoutReports"
+          >
+            <img src={Reports} alt="ScoutReports" />
+          </Link>
+
+          <div className="counter">{reportsCounter}</div>
+        </div>
       </div>
     </nav>
   );
