@@ -12,26 +12,33 @@ const Search = ({ selectedPlayer, selectedPlayerReport }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [playerData, setPlayerData] = useState({});
+  const [skip, setSkip] = useState(0);
+
+  const fetchPlayersInfo = async () => {
+    try {
+      setIsLoading(true);
+      const response = await api.post('/find', {
+        collection: 'player_stats',
+        database: 'myFirstDatabase',
+        dataSource: 'Cluster0',
+        limit: 20,
+        skip: 10,
+        search: { player_name: searchField },
+      });
+      setPlayersData([...filteredPlayers, ...response.data.documents]);
+      setIsLoading(false);
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   useEffect(() => {
-    const fetchPlayersInfo = async () => {
-      try {
-        setIsLoading(true);
-        const response = await api.post('/find', {
-          collection: 'player_stats',
-          database: 'myFirstDatabase',
-          dataSource: 'Cluster0',
-          limit: 10,
-        });
-        setPlayersData(response.data.documents);
-        setIsLoading(false);
-      } catch (e) {
-        console.log(e);
-      }
-    };
-
     fetchPlayersInfo();
-  }, []);
+  }, [skip]);
+
+  useEffect(() => {
+    fetchPlayersInfo();
+  }, [searchField]);
 
   const search = (input) => {
     setSearchField(input);
@@ -55,12 +62,17 @@ const Search = ({ selectedPlayer, selectedPlayerReport }) => {
   const handleModalClose = () => {
     setIsModalOpen(false);
   };
-  const reportRequest = () => {
-    console.log(playerData);
-    selectedPlayerReport(playerData);
-  };
+
   const compareRequest = () => {
     selectedPlayer(playerData);
+  };
+
+  const onScroll = (e) => {
+    const bottom =
+      e.target.scrollHeight - e.target.scrollTop === e.target.clientHeight;
+    if (bottom) {
+      setSkip(skip + 1);
+    }
   };
 
   return (
@@ -68,16 +80,18 @@ const Search = ({ selectedPlayer, selectedPlayerReport }) => {
       <Modal
         isOpen={isModalOpen}
         handleModalClose={handleModalClose}
-        reportRequest={reportRequest}
         compareRequest={compareRequest}
+        selectedPlayerReport={selectedPlayerReport}
+        selectedPlayer={selectedPlayer}
+        playerData={playerData}
       />
       <SearchInput handleSearchInput={search} />
       {isLoading ? (
         <p>Loading...</p>
       ) : (
         <PlayersList
+          onScroll={onScroll}
           players={filteredPlayers}
-          selectedPlayer={selectedPlayer}
           onCardClick={handleModalOpen}
         />
       )}

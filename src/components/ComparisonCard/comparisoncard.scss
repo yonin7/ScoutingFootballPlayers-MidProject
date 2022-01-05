@@ -1,0 +1,23 @@
+.ComparisonCardContainer {
+  min-width: 40rem;
+  gap: 7rem;
+  height: 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  border: 1px solid black;
+  border-radius: 1rem;
+  ul {
+    list-style: none;
+  }
+  .nameAndImg {
+    display: flex;
+    align-items: center;
+  }
+  .valueAndSalary {
+    background-color: rgba(109, 104, 104, 0.589);
+    border-radius: 0.3rem;
+    padding: 0.5rem 1.3rem;
+  }
+}

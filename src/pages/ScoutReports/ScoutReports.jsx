@@ -4,25 +4,26 @@ import { v4 as uuid } from 'uuid';
 import './scoutreports.css';
 
 const ScoutReports = ({ playerReportInfo, reportsCounterFunc }) => {
+  const player = playerReportInfo;
+  const [reportsList, setReportsList] = useState(
+    JSON.parse(localStorage.getItem('reports')) || []
+  );
+  console.log(playerReportInfo);
   const handleDelete = (id) => {
     console.log(id);
     let newList = reportsList.filter((playerCard) => playerCard.id !== id);
     setReportsList(newList);
   };
 
-  const player = playerReportInfo;
-  const [reportsList, setReportsList] = useState(
-    JSON.parse(localStorage.getItem('reports')) || []
-  );
-
   useEffect(() => {
     const isAlreadyExistsPlayer = reportsList.find(
-      (report) => report?.player?.name === player?.name
+      (report) => report.player._id === player._id
     );
 
     if (player && !isAlreadyExistsPlayer) {
       reportsCounterFunc(localStorage.length);
-      const newReports = [...reportsList, { id: uuid(), player }];
+      console.log(player);
+      const newReports = [...reportsList, { player }];
       setReportsList(newReports);
       localStorage.setItem('reports', JSON.stringify(newReports));
     }

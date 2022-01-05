@@ -3,7 +3,8 @@ import './reportinput.css';
 
 const ReportInput = ({ id, Skill, report, handleInputDelete, setReport }) => {
   const handleUpdate = (property) => (e) => {
-    setReport(property, e.target.value, report.id);
+    console.log(report);
+    setReport(property, e.target.value, report.player._id);
   };
   return (
     <div className="inputcontainer">
@@ -16,8 +17,8 @@ const ReportInput = ({ id, Skill, report, handleInputDelete, setReport }) => {
       </div>
       <label>{Skill}:</label>
       <input
-        type="number"
-        // value={report.value || ''}
+        type="text"
+        value={report.value}
         onChange={handleUpdate(`${Skill}`)}
       />
     </div>

@@ -13,7 +13,7 @@ const PlayerCard = ({ player, displayLink = false, onCardClick }) => {
       <div className="img__container">
         <h4>{player.player_name}</h4>
         <img src={`${player.image}_120.png`} />
-        <h5 className="position">{player.positioning}POS </h5>
+        <h5 className="position">{player.position} </h5>
       </div>
       <div className="shareAndLike">
         <div className="like">🖤</div>

@@ -42,14 +42,15 @@ const ReportCard = ({ report, handleDelete }) => {
         className="Delete"
         type="submit"
         onClick={() => handleDelete(report.id)}
-        value="X"
+        value="❌"
       />{' '}
       {/* Header */}
       {report.player && (
         <div>
           {' '}
-          <h3>{report.player.image}</h3>
-          <h4>{report.player.name}</h4>
+          <img src={`${report.player.image}_120.png`} />
+          {}
+          <h4>{report.player.player_name}</h4>
           <h5>{report.player.team}</h5>
         </div>
       )}

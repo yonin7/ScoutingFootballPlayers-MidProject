@@ -17,17 +17,15 @@ const AppRoutes = () => {
     setReportsCounter(num);
   };
   const selectedPlayer = (data) => {
+    console.log(data);
     let newData = [...playerInfo];
-    if (newData.length >= 3) {
+    if (newData.length >= 2) {
       newData.shift();
       newData.push(data);
     } else newData.push(data);
     setPlayerInfo(newData);
     console.log(playerInfo);
   };
-  useEffect(() => {
-    selectedPlayerReport();
-  }, [playerReportInfo, playerInfo]);
 
   const selectedPlayerReport = (data) => {
     setPlayerReportInfo(data);

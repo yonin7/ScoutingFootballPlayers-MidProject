@@ -2,16 +2,19 @@ import React from 'react';
 import PlayerCard from '../PlayerCard/PlayerCard';
 import './playerslist.css';
 
-const PlayersList = ({ players, selectedPlayer, onCardClick }) => {
+const PlayersList = ({ players, onCardClick, onScroll }) => {
   return (
-    <div className="cards__container">
+    <div
+      className="cards__container"
+      style={{ overflowY: 'scroll' }}
+      onScroll={onScroll}
+    >
       {players?.map((player, i) => {
         return (
           <PlayerCard
             key={i}
             player={player}
             displayLink={true}
-            selectedPlayer={selectedPlayer}
             onCardClick={onCardClick}
           />
         );
