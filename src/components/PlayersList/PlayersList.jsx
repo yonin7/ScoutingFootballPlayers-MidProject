@@ -4,11 +4,7 @@ import './playerslist.css';
 
 const PlayersList = ({ players, onCardClick, onScroll }) => {
   return (
-    <div
-      className="cards__container"
-      style={{ overflowY: 'scroll' }}
-      onScroll={onScroll}
-    >
+    <div className="cards__container">
       {players?.map((player, i) => {
         return (
           <div key={i}>

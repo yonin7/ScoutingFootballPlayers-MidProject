@@ -4,7 +4,6 @@
   align-items: center;
   height: 40px;
   width: 130px;
-  background-color: white;
   position: absolute;
   left: 0;
   justify-content: flex-end;
@@ -17,12 +16,12 @@
   width: 85%;
   height: 40px;
   margin-left: 130px;
-  background: repeating-linear-gradient(to right, #ddd, #ddd 1px, #fff 1px);
+  border-top: 0.2px solid black;
 }
 .percentage:after {
   content: "";
   display: block;
-  background-color: #3d9970;
+  background-color: #34758f;
   width: 50px;
   margin-bottom: 10px;
   height: 90%;

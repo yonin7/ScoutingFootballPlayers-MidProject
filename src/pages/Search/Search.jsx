@@ -60,14 +60,6 @@ const Search = ({ selectedPlayer, selectedPlayerReport }) => {
     selectedPlayer(playerData);
   };
 
-  const onScroll = (e) => {
-    const bottom =
-      e.target.scrollHeight - e.target.scrollTop === e.target.clientHeight;
-    if (bottom) {
-      setSkip(skip + 1);
-    }
-  };
-
   return (
     <div className="search__container">
       <Modal
@@ -82,11 +74,7 @@ const Search = ({ selectedPlayer, selectedPlayerReport }) => {
       {isLoading ? (
         <p>Loading...</p>
       ) : (
-        <PlayersList
-          onScroll={onScroll}
-          players={filteredPlayers}
-          onCardClick={handleModalOpen}
-        />
+        <PlayersList players={filteredPlayers} onCardClick={handleModalOpen} />
       )}
     </div>
   );
