@@ -8,7 +8,7 @@
   gap: 1.5rem;
 }
 .compare__container:before {
-  content: "";
+  content: '';
   background: url(../../assets/compare_back.jpg) no-repeat center center/cover;
   opacity: 0.5;
   position: absolute;
@@ -37,13 +37,33 @@
 .compare__container .graph {
   display: grid;
   grid-template-columns: 1fr;
+  justify-items: center;
+  align-items: center;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 867px) {
   .compare__container {
-    margin-top: 2rem;
+    margin-top: 7rem;
     gap: 2rem;
     flex-direction: column;
     height: 100%;
   }
-}/*# sourceMappingURL=comparison.css.map */
+  .compare__container .cardandgraph {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-direction: column;
+    border-radius: 6rem;
+    width: 98%;
+    height: 67vh;
+  }
+  .compare__container .cards__container {
+    margin: 0.5rem;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    height: 10rem;
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+} /*# sourceMappingURL=comparison.css.map */

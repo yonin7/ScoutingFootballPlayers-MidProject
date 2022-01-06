@@ -26,7 +26,7 @@ const Graph = ({ player1, player2 }) => {
     <>
       {skills.map((skill) => (
         <dd className={`percentage percentage-${calculator(skill)}`}>
-          <span className="text">{skill}</span>
+          <h6 className="text">{skill}</h6>
         </dd>
       ))}
     </>

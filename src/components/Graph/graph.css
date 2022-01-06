@@ -5,7 +5,7 @@
   height: 40px;
   width: 130px;
   position: absolute;
-  left: 0;
+  left: 0rem;
   justify-content: flex-end;
 }
 
@@ -15,16 +15,15 @@
   text-transform: uppercase;
   width: 85%;
   height: 40px;
-  margin-left: 130px;
   border-top: 0.2px solid black;
 }
 .percentage:after {
   content: "";
   display: block;
   background-color: #34758f;
-  width: 50px;
+  width: 3px;
   margin-bottom: 10px;
-  height: 90%;
+  height: 100%;
   position: relative;
   top: 50%;
   left: 50%;
@@ -534,4 +533,40 @@
 .percentage-100:after {
   width: 100%;
   left: -50%;
+}
+
+@media (max-width: 768px) {
+  .text {
+    font-size: 0.7rem;
+    font-weight: 600;
+    height: 20px;
+    text-align: left;
+    justify-content: flex-start;
+  }
+
+  .percentage {
+    font-size: 0.8em;
+    line-height: 0.5;
+    text-transform: uppercase;
+    width: 85%;
+    height: 20px;
+    border-top: 0.2px solid black;
+  }
+  .percentage:after {
+    content: "";
+    display: block;
+    background-color: #34758f;
+    width: 3px;
+    margin-bottom: 10px;
+    height: 90%;
+    position: relative;
+    top: 20%;
+    left: 50%;
+    transform: translateY(-50%);
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+  }
+  .percentage:hover:after, .percentage:focus:after {
+    background-color: #aaa;
+  }
 }/*# sourceMappingURL=graph.css.map */

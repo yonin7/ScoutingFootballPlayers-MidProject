@@ -22,12 +22,16 @@
   padding: 0.5rem 1.3rem;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 867px) {
   .ComparisonCardContainer {
-    width: 25rem;
-    gap: 2rem;
-    height: 10rem;
-    justify-content: space-between;
+    width: 12rem;
+    font-size: 0.5rem;
+    height: 4.5rem;
+    gap: 0.1rem;
     padding: 0 0.5rem;
   }
-}/*# sourceMappingURL=comparisoncard.css.map */
+  .ComparisonCardContainer img {
+    width: 4rem;
+    height: 4rem;
+  }
+} /*# sourceMappingURL=comparisoncard.css.map */

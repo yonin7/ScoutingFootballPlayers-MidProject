@@ -9,7 +9,7 @@
   padding: 2rem;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 867px) {
   .cards__container {
     width: 80%;
     height: 100%;
