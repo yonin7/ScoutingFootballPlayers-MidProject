@@ -19,7 +19,9 @@
   display: inline-block;
   border-bottom: 2px solid transparent;
 }
-
+.login__error {
+  color: red;
+}
 .container {
   background: linear-gradient(90deg, #ffffff, #6dd5fa, #2980b9);
   display: flex;

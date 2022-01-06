@@ -20,30 +20,16 @@ const Graph = ({ player1, player2 }) => {
     'penalties',
     'strength',
   ];
-  const calculator = (skill) => {
-    const minus = player1[skill] - player2[skill];
-    if (minus < 0) setDerection('forwards');
-    else setDerection('backwards');
-    const x = document.getElementById(skill);
-    x.style.backgroundColor = 'green';
-    setWidth(minus);
-  };
+  const calculator = (skill) => player1[skill] - player2[skill];
+
   return (
-    <div className="skillscontainer">
-      {skills.map((skill) => {
-        return (
-          <div className="skillcontainer">
-            <div className="skill">{skill}</div>
-            <div className="line">
-              {player1[skill]}
-              <div className="percentage"></div>
-              <div className="bar" id={{ skill }}></div>
-              {player2[skill]}
-            </div>
-          </div>
-        );
-      })}
-    </div>
+    <>
+      {skills.map((skill) => (
+        <dd className={`percentage percentage-${calculator(skill)}`}>
+          <span className="text">{skill}</span>
+        </dd>
+      ))}
+    </>
   );
 };
 

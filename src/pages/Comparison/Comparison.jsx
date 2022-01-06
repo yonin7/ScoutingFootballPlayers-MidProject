@@ -27,7 +27,7 @@ const Comparison = ({ playerInfo }) => {
             );
           })}
         </div>
-        <div className="graph">
+        <div className="graph" style={{ width: '100%' }}>
           <Graph player1={player1} player2={player2} />
         </div>
       </div>

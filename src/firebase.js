@@ -11,4 +11,11 @@ const app = firebase.initializeApp({
 });
 
 export const auth = app.auth();
+
+export const registerWithEmailAndPassword = async (email, password) => {
+  const res = await auth.createUserWithEmailAndPassword(email, password);
+  const user = res.user;
+
+  return user;
+};
 export default app;

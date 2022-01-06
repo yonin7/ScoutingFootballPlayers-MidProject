@@ -1,17 +1,19 @@
 import { useState } from 'react';
 import './reportcard.css';
 import Input from '../ReportInput/ReportInput';
+import api from '../../api/report';
 
-const ReportCard = ({ report, handleDelete }) => {
+const ReportCard = ({
+  report,
+  report: { attacking_work_rate, sprint_speed, defensive_work_rate, potential },
+  handleDelete,
+}) => {
   const [skills, setSkills] = useState([
-    'Pace',
-    'Dribbling',
-    'Shooting',
-    'Passing',
-    'Defence',
-    'Physical',
+    'attacking_work_rate',
+    'sprint_speed',
+    'defensive_work_rate',
+    'potential',
   ]);
-  const [newSkills, setNewSkills] = useState([]);
 
   const setReport = (property, value, id) => {
     console.log(property, value, id);
@@ -22,18 +24,21 @@ const ReportCard = ({ report, handleDelete }) => {
     setSkills(newReports);
   };
 
-  const handleCreate = (e) => {
-    const newSkills = [...skills];
-    newSkills.push(e.target.value);
-    setNewSkills(newSkills);
+  const handleUpdate = async (field, value, id) => {
+    await api.put(field, value, id);
   };
-  const submitCreation = () => {
+
+  const handleCreate = async () => {
+    let id = report.player_api_id;
+    let newSkill = document.getElementById('newText');
+    await api.post(newSkill, '', id);
+    setSkills([...skills, newSkill]);
+  };
+
+  const handleDeleteInput = async (id, field) => {
+    await api.delete(id, field);
+    const newSkills = skills.fillter((skill) => skill !== field);
     setSkills(newSkills);
-  };
-  const handleInputDelete = (id) => {
-    console.log(id);
-    let newSkillsList = skills.filter((playerCard, index) => index !== id);
-    setSkills(newSkillsList);
   };
 
   return (
@@ -41,42 +46,39 @@ const ReportCard = ({ report, handleDelete }) => {
       <input
         className="Delete"
         type="submit"
-        onClick={() => handleDelete(report.id)}
         value="❌"
+        onClick={() => handleDelete(report.player_api_id)}
       />{' '}
       {/* Header */}
-      {report.player && (
+      {report && (
         <div>
           {' '}
-          <img src={`${report.player.image}_120.png`} />
+          <img src={`${report.image}_120.png`} />
           {}
-          <h4>{report.player.player_name}</h4>
-          <h5>{report.player.team}</h5>
+          <h4>{report.player_name}</h4>
+          <h5>{report.team}</h5>
         </div>
       )}
       <div>
-        {report.player &&
+        {report &&
           skills.map((skill, index) => {
             return (
               <div className="" key={index}>
                 <Input
                   id={index}
                   Skill={skill}
-                  handleInputDelete={handleInputDelete}
                   report={report}
                   setReport={setReport}
+                  handleUpdate={handleUpdate}
+                  handleDeleteInput={handleDeleteInput}
                 />
               </div>
             );
           })}
-        {report.player && (
+        {report && (
           <div className="createNewInput">
-            <input type="text" onChange={(e) => handleCreate(e)} />
-            <input
-              type="submit"
-              value="Add Skill"
-              onClick={() => submitCreation()}
-            />
+            <input id="newText" type="text" />
+            <input type="submit" value="Add Skill" onClick={handleCreate} />
           </div>
         )}
       </div>

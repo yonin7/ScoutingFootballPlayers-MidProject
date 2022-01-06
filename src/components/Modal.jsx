@@ -10,7 +10,6 @@ const Modal = ({
   selectedPlayer,
 }) => {
   const modalRoot = document.getElementById('modal-root');
-
   const handleSelect = (e) => {
     if (e.target.checked) selectedPlayer(playerData);
   };

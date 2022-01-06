@@ -7,4 +7,3 @@ export default axios.create({
     'api-key': process.env.REACT_APP_SCOUTER_API_KEY,
   },
 });
-//'https://intense-mesa-62220.herokuapp.com/http://sofifa.com/api/player/suggestion?gender=0&hl=en-US&term=messi',

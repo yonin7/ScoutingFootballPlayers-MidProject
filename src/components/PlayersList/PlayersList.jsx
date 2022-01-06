@@ -11,12 +11,13 @@ const PlayersList = ({ players, onCardClick, onScroll }) => {
     >
       {players?.map((player, i) => {
         return (
-          <PlayerCard
-            key={i}
-            player={player}
-            displayLink={true}
-            onCardClick={onCardClick}
-          />
+          <div key={i}>
+            <PlayerCard
+              player={player}
+              displayLink={true}
+              onCardClick={onCardClick}
+            />
+          </div>
         );
       })}
     </div>

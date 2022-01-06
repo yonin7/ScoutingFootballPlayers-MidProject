@@ -18,14 +18,14 @@ const Search = ({ selectedPlayer, selectedPlayerReport }) => {
     try {
       setIsLoading(true);
       const response = await api.post('/find', {
-        collection: 'player_stats',
+        collection: 'player_stats', //reports
         database: 'myFirstDatabase',
         dataSource: 'Cluster0',
         limit: 20,
-        skip: 10,
-        search: { player_name: searchField },
+        skip,
+        filter: { player_name: { $regex: searchField, $options: 'i' } },
       });
-      setPlayersData([...filteredPlayers, ...response.data.documents]);
+      setPlayersData(response.data.documents);
       setIsLoading(false);
     } catch (e) {
       console.log(e);
@@ -45,14 +45,7 @@ const Search = ({ selectedPlayer, selectedPlayerReport }) => {
   };
 
   useEffect(() => {
-    if (searchField) {
-      const newFilteredPlayers = playersData.filter((player) =>
-        player.name.toLowerCase().startsWith(searchField.toLowerCase())
-      );
-      setFilteredPlayers(newFilteredPlayers);
-    } else {
-      setFilteredPlayers(playersData);
-    }
+    setFilteredPlayers(playersData);
   }, [searchField, playersData]);
 
   const handleModalOpen = (player) => {
