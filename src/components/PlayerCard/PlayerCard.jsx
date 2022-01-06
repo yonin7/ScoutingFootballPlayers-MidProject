@@ -1,13 +1,7 @@
 import { Link } from 'react-router-dom';
 import './playercard.css';
 const PlayerCard = ({ player, displayLink = false, onCardClick }) => {
-  // const chosenPlayer = () => {
-  //   selectedPlayer(player);
-  // };
-
-  const toReport = (e) => {
-    console.log(e);
-  };
+  console.log(player);
   return (
     <div className="card__container" onClick={() => onCardClick(player)}>
       <div className="img__container">
@@ -25,9 +19,9 @@ const PlayerCard = ({ player, displayLink = false, onCardClick }) => {
         </div>
       </div>
       <div className="titles">
-        <h5>Age:{player.birthday}</h5>
-        <h5>heigth:{player.heigth}</h5>
-        <h5>weigth:{player.weigth}</h5>
+        <h5>Age: {player.birthday}</h5>
+        <h5>height: {player.height} m</h5>
+        <h5>weight: {player.weight} Kg</h5>
       </div>
     </div>
   );
