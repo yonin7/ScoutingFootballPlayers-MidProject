@@ -1,10 +1,12 @@
 import React from 'react';
 import './home.css';
+import Img from '../../assets/GETZE.jpg';
+import DECISIONI from '../../assets/DECISIONI.png';
 
 const Homepage = () => {
   return (
     <div className="homepageContainer">
-      <div>
+      <main className="main">
         <h1>The Football Platform</h1>
         <p>
           The professional platform for people working in the football world:
@@ -15,7 +17,7 @@ const Homepage = () => {
           players; learn by the best. Everywhere, from your desktop, tablet or
           mobile.
         </p>
-      </div>
+      </main>
     </div>
   );
 };
